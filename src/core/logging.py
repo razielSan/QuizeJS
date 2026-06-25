@@ -5,8 +5,6 @@ from settings.paths import LOG_DIR
 
 LOG_DIR.mkdir(exist_ok=True)
 
-a = 1
-
 
 class FormatLogging:
     QUANTITY: int = 50
