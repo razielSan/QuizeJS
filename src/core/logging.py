@@ -16,7 +16,7 @@ class FormatLogging:
     DATE_FMT: str = "%Y-%m-%d %H:%M:%S"
 
 
-def setup_logging():
+def setup_logging() -> None:
     formatter = logging.Formatter(
         fmt=FormatLogging.FMT,
         datefmt=FormatLogging.DATE_FMT,

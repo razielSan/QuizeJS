@@ -1,3 +1,5 @@
+from typing import AsyncGenerator
+
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
@@ -10,9 +12,9 @@ from app.quize.backend.core.errros import inlude_errors
 from core.logging import setup_logging
 
 
-def create_app():
+def create_app() -> FastAPI:
     @asynccontextmanager
-    async def life_span(app: FastAPI):
+    async def life_span(app: FastAPI) -> AsyncGenerator[None, None]:
         app.state.httpx_client = httpx.AsyncClient()
         yield
         await app.state.httpx_client.aclose()
