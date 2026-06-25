@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "QuizJS"
+version = "0.1.0"
+description = ""
+authors = ["raziel <tvindzon@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "app", from = "src" },
+    { include = "core", from = "src" },
+    { include = "settings", from = "src" },
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.8.10"
+fastapi = {version = "0.111.0", extras = ["all"]}
+httpx = "0.28.1"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "0.4.1"
+pre-commit = "3.5.0"
+mypy = "1.14.1"
+flake8 = "7.1.2"
+black = "24.8.0"
+pycodestyle = "2.12.1"
+pydocstyle = "6.3.0"
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "B", "C4"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends", "Depends"]
+
+[tool.poetry.scripts]
+app = "app.main:run"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
